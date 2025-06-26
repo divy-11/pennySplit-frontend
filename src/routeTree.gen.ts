@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as MainRouteImport } from './routes/main'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProductsPidRouteImport } from './routes/Products.$pid'
 
 const MainRoute = MainRouteImport.update({
   id: '/main',
@@ -28,35 +29,44 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProductsPidRoute = ProductsPidRouteImport.update({
+  id: '/Products/$pid',
+  path: '/Products/$pid',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/main': typeof MainRoute
+  '/Products/$pid': typeof ProductsPidRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/main': typeof MainRoute
+  '/Products/$pid': typeof ProductsPidRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/main': typeof MainRoute
+  '/Products/$pid': typeof ProductsPidRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/main'
+  fullPaths: '/' | '/about' | '/main' | '/Products/$pid'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/main'
-  id: '__root__' | '/' | '/about' | '/main'
+  to: '/' | '/about' | '/main' | '/Products/$pid'
+  id: '__root__' | '/' | '/about' | '/main' | '/Products/$pid'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   MainRoute: typeof MainRoute
+  ProductsPidRoute: typeof ProductsPidRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -82,6 +92,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/Products/$pid': {
+      id: '/Products/$pid'
+      path: '/Products/$pid'
+      fullPath: '/Products/$pid'
+      preLoaderRoute: typeof ProductsPidRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -89,6 +106,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   MainRoute: MainRoute,
+  ProductsPidRoute: ProductsPidRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

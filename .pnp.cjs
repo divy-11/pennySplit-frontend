@@ -32,6 +32,7 @@ const RAW_RUNTIME_STATE =
           ["@tailwindcss/vite", "virtual:129067d0391d6b0a15c47dbc6383c9384287b7c326b78a3a0ec7956bfae37d6f9aa73e85942a7d8a1d73b96ad41be201d62e36590f71dc21a78118db468de699#npm:4.1.10"],\
           ["@tanstack/react-router", "virtual:129067d0391d6b0a15c47dbc6383c9384287b7c326b78a3a0ec7956bfae37d6f9aa73e85942a7d8a1d73b96ad41be201d62e36590f71dc21a78118db468de699#npm:1.121.34"],\
           ["@tanstack/react-router-devtools", "virtual:129067d0391d6b0a15c47dbc6383c9384287b7c326b78a3a0ec7956bfae37d6f9aa73e85942a7d8a1d73b96ad41be201d62e36590f71dc21a78118db468de699#npm:1.121.34"],\
+          ["@tanstack/router-core", "npm:1.121.34"],\
           ["@tanstack/router-plugin", "virtual:129067d0391d6b0a15c47dbc6383c9384287b7c326b78a3a0ec7956bfae37d6f9aa73e85942a7d8a1d73b96ad41be201d62e36590f71dc21a78118db468de699#npm:1.121.37"],\
           ["@types/react", "npm:19.1.8"],\
           ["@types/react-dom", "virtual:129067d0391d6b0a15c47dbc6383c9384287b7c326b78a3a0ec7956bfae37d6f9aa73e85942a7d8a1d73b96ad41be201d62e36590f71dc21a78118db468de699#npm:19.1.6"],\
@@ -46,6 +47,7 @@ const RAW_RUNTIME_STATE =
           ["react", "npm:19.1.0"],\
           ["react-dom", "virtual:129067d0391d6b0a15c47dbc6383c9384287b7c326b78a3a0ec7956bfae37d6f9aa73e85942a7d8a1d73b96ad41be201d62e36590f71dc21a78118db468de699#npm:19.1.0"],\
           ["tailwindcss", "npm:4.1.10"],\
+          ["tiny-invariant", "npm:1.3.3"],\
           ["vite", "virtual:129067d0391d6b0a15c47dbc6383c9384287b7c326b78a3a0ec7956bfae37d6f9aa73e85942a7d8a1d73b96ad41be201d62e36590f71dc21a78118db468de699#npm:6.3.5"]\
         ],\
         "linkType": "SOFT"\
@@ -3565,6 +3567,7 @@ const RAW_RUNTIME_STATE =
           ["@tailwindcss/vite", "virtual:129067d0391d6b0a15c47dbc6383c9384287b7c326b78a3a0ec7956bfae37d6f9aa73e85942a7d8a1d73b96ad41be201d62e36590f71dc21a78118db468de699#npm:4.1.10"],\
           ["@tanstack/react-router", "virtual:129067d0391d6b0a15c47dbc6383c9384287b7c326b78a3a0ec7956bfae37d6f9aa73e85942a7d8a1d73b96ad41be201d62e36590f71dc21a78118db468de699#npm:1.121.34"],\
           ["@tanstack/react-router-devtools", "virtual:129067d0391d6b0a15c47dbc6383c9384287b7c326b78a3a0ec7956bfae37d6f9aa73e85942a7d8a1d73b96ad41be201d62e36590f71dc21a78118db468de699#npm:1.121.34"],\
+          ["@tanstack/router-core", "npm:1.121.34"],\
           ["@tanstack/router-plugin", "virtual:129067d0391d6b0a15c47dbc6383c9384287b7c326b78a3a0ec7956bfae37d6f9aa73e85942a7d8a1d73b96ad41be201d62e36590f71dc21a78118db468de699#npm:1.121.37"],\
           ["@types/react", "npm:19.1.8"],\
           ["@types/react-dom", "virtual:129067d0391d6b0a15c47dbc6383c9384287b7c326b78a3a0ec7956bfae37d6f9aa73e85942a7d8a1d73b96ad41be201d62e36590f71dc21a78118db468de699#npm:19.1.6"],\
@@ -3579,6 +3582,7 @@ const RAW_RUNTIME_STATE =
           ["react", "npm:19.1.0"],\
           ["react-dom", "virtual:129067d0391d6b0a15c47dbc6383c9384287b7c326b78a3a0ec7956bfae37d6f9aa73e85942a7d8a1d73b96ad41be201d62e36590f71dc21a78118db468de699#npm:19.1.0"],\
           ["tailwindcss", "npm:4.1.10"],\
+          ["tiny-invariant", "npm:1.3.3"],\
           ["vite", "virtual:129067d0391d6b0a15c47dbc6383c9384287b7c326b78a3a0ec7956bfae37d6f9aa73e85942a7d8a1d73b96ad41be201d62e36590f71dc21a78118db468de699#npm:6.3.5"]\
         ],\
         "linkType": "SOFT"\
