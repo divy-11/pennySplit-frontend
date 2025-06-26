@@ -8,14 +8,28 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
+import { createFileRoute } from '@tanstack/react-router'
+
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as RegisterRouteImport } from './routes/register'
 import { Route as MainRouteImport } from './routes/main'
 import { Route as LoginRouteImport } from './routes/login'
-import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProductsPidRouteImport } from './routes/Products.$pid'
 
+const DashboardLazyRouteImport = createFileRoute('/dashboard')()
+
+const DashboardLazyRoute = DashboardLazyRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any).lazy(() => import('./routes/dashboard.lazy').then((d) => d.Route))
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MainRoute = MainRouteImport.update({
   id: '/main',
   path: '/main',
@@ -24,11 +38,6 @@ const MainRoute = MainRouteImport.update({
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DashboardRoute = DashboardRouteImport.update({
-  id: '/dashboard',
-  path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -50,26 +59,29 @@ const ProductsPidRoute = ProductsPidRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
   '/main': typeof MainRoute
+  '/register': typeof RegisterRoute
+  '/dashboard': typeof DashboardLazyRoute
   '/Products/$pid': typeof ProductsPidRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
   '/main': typeof MainRoute
+  '/register': typeof RegisterRoute
+  '/dashboard': typeof DashboardLazyRoute
   '/Products/$pid': typeof ProductsPidRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
   '/main': typeof MainRoute
+  '/register': typeof RegisterRoute
+  '/dashboard': typeof DashboardLazyRoute
   '/Products/$pid': typeof ProductsPidRoute
 }
 export interface FileRouteTypes {
@@ -77,33 +89,57 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
-    | '/dashboard'
     | '/login'
     | '/main'
+    | '/register'
+    | '/dashboard'
     | '/Products/$pid'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/dashboard' | '/login' | '/main' | '/Products/$pid'
+  to:
+    | '/'
+    | '/about'
+    | '/login'
+    | '/main'
+    | '/register'
+    | '/dashboard'
+    | '/Products/$pid'
   id:
     | '__root__'
     | '/'
     | '/about'
-    | '/dashboard'
     | '/login'
     | '/main'
+    | '/register'
+    | '/dashboard'
     | '/Products/$pid'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  DashboardRoute: typeof DashboardRoute
   LoginRoute: typeof LoginRoute
   MainRoute: typeof MainRoute
+  RegisterRoute: typeof RegisterRoute
+  DashboardLazyRoute: typeof DashboardLazyRoute
   ProductsPidRoute: typeof ProductsPidRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardLazyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/main': {
       id: '/main'
       path: '/main'
@@ -116,13 +152,6 @@ declare module '@tanstack/react-router' {
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/dashboard': {
-      id: '/dashboard'
-      path: '/dashboard'
-      fullPath: '/dashboard'
-      preLoaderRoute: typeof DashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -152,9 +181,10 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  DashboardRoute: DashboardRoute,
   LoginRoute: LoginRoute,
   MainRoute: MainRoute,
+  RegisterRoute: RegisterRoute,
+  DashboardLazyRoute: DashboardLazyRoute,
   ProductsPidRoute: ProductsPidRoute,
 }
 export const routeTree = rootRouteImport

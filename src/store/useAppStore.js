@@ -1,5 +1,5 @@
-import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
+import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 export const useAppStore = create(
     persist((set) => ({
         user: null,
@@ -11,4 +11,18 @@ export const useAppStore = create(
     }), {
         name: 'auth-storage',
     })
-)
+);
+
+
+export const useGroupStore = create(
+    persist(
+        (set) => ({
+            groups: [],
+            setGroup: (data) => set({ groups: data }),
+        }),
+        {
+            name: 'group-storage',
+            partialize: (state) => ({ groups: state.groups }),
+        }
+    )
+);
