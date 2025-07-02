@@ -1,10 +1,9 @@
 import { createFileRoute } from '@tanstack/react-router'
 
-export const Route = createFileRoute('/about')({
+export const Route = createFileRoute('/dashboard')({
   component: RouteComponent,
-  defaultPreload: 'intent',
 })
 
 function RouteComponent() {
-  return <div>Hello "/about"!</div>
+  return <div>Hello "/dashboard"!</div>
 }
