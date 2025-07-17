@@ -2,6 +2,7 @@ import { createLazyFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import authService from "../api/authService";
 import groupsService from "../api/groupsService";
+import GroupTripComponent from "../components/GroupTripComponent";
 import { useAppStore, useGroupStore } from "../store/useAppStore";
 
 export const Route = createLazyFileRoute("/dashboard")({
@@ -42,7 +43,6 @@ function RouteComponent() {
 
   const handleGroupCreation = (event) => {
     event.preventDefault();
-    window.location.href = "/create-group";
   };
 
   return (
@@ -54,7 +54,7 @@ function RouteComponent() {
         <p>Loading groups...</p>
       ) : groups && groups.length > 0 ? (
         groups.map((group, index) => (
-          <div className={group._id} key={index}>
+          <div id={group._id} key={index}>
             {group.name}
           </div>
         ))
@@ -62,9 +62,9 @@ function RouteComponent() {
         <p>No groups found.</p>
       )}
 
-      <button onClick={handleGroupCreation} className="mt-4 btn btn-primary">
-        Add a Group Trip
-      </button>
+      <br />
+      <GroupTripComponent />
+      <br />
       <button
         onClick={handleLogout}
         className="mt-2 btn bg-red-800 text-white p-2"

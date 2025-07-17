@@ -7,7 +7,7 @@ const groupService = {
     },
 
     createGroup: async (groupData) => {
-        const res = await axiosInstance.post("/groups", groupData);
+        const res = await axiosInstance.post("/groups/create", groupData);
         return res.data;
     },
 
