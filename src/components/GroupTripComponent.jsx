@@ -15,17 +15,13 @@ const GroupTripComponent = () => {
   };
 
   const handleSave = () => {
-    console.log("Group name:", groupName);
-    // Submit group name logic here
     groupService
       .createGroup({ name: groupName })
       .then((response) => {
         console.log("Group created successfully:", response);
-        // Optionally, you can refresh the group list or show a success message
       })
       .catch((error) => {
         console.error("Error creating group:", error);
-        // Optionally, show an error message to the user
       });
     handleClose();
   };
@@ -37,7 +33,7 @@ const GroupTripComponent = () => {
         onClick={handleAddGroupClick}
         className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
       >
-        Add a Group Trip +
+        + Create Trip
       </button>
 
       {/* Modal */}
@@ -46,12 +42,6 @@ const GroupTripComponent = () => {
           <div className="bg-white rounded-lg shadow-lg w-full max-w-md p-6">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-xl font-semibold">New Group Trip</h2>
-              <button
-                onClick={handleClose}
-                className="text-gray-500 hover:text-gray-800 text-xl"
-              >
-                &times;
-              </button>
             </div>
 
             <input

@@ -22,11 +22,14 @@ axiosInstance.interceptors.response.use(
     async (error) => {
         const originalRequest = error.config;
 
-        if ((error.response?.status || error.response?.status === 401) && !originalRequest._retry) {
+        console.log("Error Code::=========================================")
+        console.log(error.response?.error)
+        console.log("Error Code::=========================================")
+        if ((error.response?.status === 401) && !originalRequest._retry) {
             originalRequest._retry = true;
 
             try {
-                const response = await axios.post(
+                const response = await axiosInstance.post(
                     `${API_URL}auth/users/refresh-access`,
                     {},
                     { withCredentials: true }
